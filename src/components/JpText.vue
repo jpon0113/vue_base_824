@@ -1,26 +1,36 @@
 <template>
-	<component :is="tag" :style="styleProps">{{ text }}</component>
+	<component :is="tag" :style="styleProps" class="jp-text-component">{{
+		text
+	}}</component>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { pick } from 'lodash-es';
+import {
+	transformToComponentProps,
+	textDefaultProps,
+	textStylePropNames,
+} from '@/defaultProps';
+const defaultProps = transformToComponentProps(textDefaultProps);
+
 export default defineComponent({
 	name: 'jp-text',
 	props: {
-		text: {
-			type: String,
-		},
-		fontSize: {
-			type: String,
-		},
+		// text: {
+		// 	type: String,
+		// },
+		// fontSize: {
+		// 	type: String,
+		// },
 		tag: {
 			type: String,
 			default: 'div',
 		},
+		...defaultProps,
 	},
 	setup(props) {
-		const styleProps = computed(() => pick(props, ['fontSize']));
+		const styleProps = computed(() => pick(props, textStylePropNames));
 
 		return {
 			styleProps,
@@ -30,15 +40,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h2.l-text-component,
-p.l-text-component {
+h2.jp-text-component,
+p.jp-text-component {
 	margin-bottom: 0;
 }
-button.l-text-component {
+button.jp-text-component {
 	padding: 5px 10px;
 	cursor: pointer;
 }
-.l-text-component {
+.jp-text-component {
 	box-sizing: border-box;
 	white-space: pre-wrap;
 	position: relative !important;
