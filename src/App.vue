@@ -1,23 +1,16 @@
 <template>
-	<h1>慕课乐高标准模版</h1>
-	<ul>
-		<li>开箱即用</li>
-		<li>typescript</li>
-		<li>Vue3</li>
-		<li>支持 tsx</li>
-		<li>eslint</li>
-		<li>简单易用可扩展</li>
-	</ul>
-	<Hi msg="嘗試tsx in vue" />
+	<div>項目初始化</div>
+	<Home />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import Hi from "./components/Hi";
+import { defineComponent } from 'vue';
+import Home from './views/Home.vue';
+import Editor from './views/Editor.vue';
 export default defineComponent({
-	name: "App",
+	name: 'App',
 	components: {
-		Hi,
+		Home,
 	},
 });
 </script>
