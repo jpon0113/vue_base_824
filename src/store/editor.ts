@@ -1,16 +1,34 @@
-// Copyright 2025 jasonhung
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
+import { v4 as uuidv4 } from 'uuid';
 import { Module } from 'vuex';
-import { GlobalDataProps } from '.';
+import { GlobalDataProps } from './index';
+
+export interface EditorProps {
+	// 工作區渲染用數據
+	components: ComponentData[];
+	// 當前編輯是哪個元素(uuid)
+	currentElement: string;
+}
+
+interface ComponentData {
+	// 元素屬性
+	props: { [key: string]: any };
+	// id, uuid v4產生
+	id: string;
+	// 組件名稱 ex: jp-text, jp-image
+	name: string;
+}
+
+export const testComponents: ComponentData[] = [
+	{ id: uuidv4(), name: 'jp-text', props: { text: 'test1' } },
+	{ id: uuidv4(), name: 'jp-text', props: { text: 'test2' } },
+	{ id: uuidv4(), name: 'jp-text', props: { text: 'test3' } },
+];
+
+const editor: Module<EditorProps, GlobalDataProps> = {
+	state: {
+		components: testComponents,
+		currentElement: '',
+	},
+};
+
+export default editor;
