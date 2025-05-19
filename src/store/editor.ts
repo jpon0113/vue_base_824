@@ -19,9 +19,9 @@ interface ComponentData {
 }
 
 export const testComponents: ComponentData[] = [
-	{ id: uuidv4(), name: 'jp-text', props: { text: 'test1' } },
-	{ id: uuidv4(), name: 'jp-text', props: { text: 'test2' } },
-	{ id: uuidv4(), name: 'jp-text', props: { text: 'test3' } },
+	{ id: uuidv4(), name: 'jp-text', props: { text: 'test1', fontSize: '20px' } },
+	{ id: uuidv4(), name: 'jp-text', props: { text: 'test2', fontSize: '10px' } },
+	{ id: uuidv4(), name: 'jp-text', props: { text: 'test3', fontSize: '14px' } },
 ];
 
 const editor: Module<EditorProps, GlobalDataProps> = {
