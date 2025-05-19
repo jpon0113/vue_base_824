@@ -1,27 +1,18 @@
 <template>
-	<div>項目初始化</div>
-	<Home />
+	<div class="app-container">
+		<router-view />
+	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Home from './views/Home.vue';
-import Editor from './views/Editor.vue';
 export default defineComponent({
 	name: 'App',
-	components: {
-		Home,
-	},
 });
 </script>
 
 <style>
-#app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
+.page-title {
+	color: #fff;
 }
 </style>

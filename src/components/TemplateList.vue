@@ -11,7 +11,7 @@
 								v-else
 							/>
 							<div class="hover-item">
-								<a-button size="large" type="primary">使用该模版创建</a-button>
+								<a-button size="large" type="primary">使用該版型建立</a-button>
 							</div>
 						</template>
 						<a-card-meta :title="item.title">
@@ -23,10 +23,6 @@
 							</template>
 						</a-card-meta>
 					</a-card>
-					<div class="tag-list">
-						<a-tag color="red" v-if="item.isHot"> HOT </a-tag>
-						<a-tag color="green" v-if="item.isNew"> NEW </a-tag>
-					</div>
 				</router-link>
 			</a-col>
 		</a-row>
@@ -35,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-// import { TemplateProps } from '../store/templates'
+import { TemplateProps } from '../store/templates';
 export default defineComponent({
 	name: 'template-list',
 	props: {
@@ -54,11 +50,6 @@ export default defineComponent({
 }
 .poster-item .ant-card {
 	border-radius: 12px;
-}
-.tag-list {
-	position: absolute;
-	top: -4px;
-	left: 6px;
 }
 .poster-item .ant-card-cover {
 	height: 390px;
