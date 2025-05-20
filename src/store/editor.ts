@@ -46,6 +46,16 @@ const editor: Module<EditorProps, GlobalDataProps> = {
 		components: testComponents,
 		currentElement: '',
 	},
+	mutations: {
+		addComponent(state, props) {
+			const newComponent: ComponentData = {
+				id: uuidv4(),
+				name: 'jp-text',
+				props,
+			};
+			state.components.push(newComponent);
+		},
+	},
 };
 
 export default editor;
