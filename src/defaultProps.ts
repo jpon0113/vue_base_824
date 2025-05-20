@@ -87,7 +87,7 @@ export const textStylePropNames = without(
 	'text'
 );
 // mapValue
-export const transformToComponentProps = (props: { [key: string]: any }) => {
+export const transformToComponentProps = <T extends {}>(props: T) => {
 	return mapValues(props, (item) => {
 		return {
 			type: (item as any).constructor as StringConstructor,
@@ -95,11 +95,3 @@ export const transformToComponentProps = (props: { [key: string]: any }) => {
 		};
 	});
 };
-// export const transformToComponentProps = <T extends {}>(props: T) => {
-// 	return mapValues(props, (item) => {
-// 		return {
-// 			type: (item as any).constructor as StringConstructor,
-// 			default: item,
-// 		};
-// 	});
-// };

@@ -1,7 +1,11 @@
 <template>
-	<component :is="tag" :style="styleProps" class="jp-text-component">{{
-		text
-	}}</component>
+	<component
+		:is="tag"
+		:style="styleProps"
+		class="jp-text-component"
+		@click="handleClick"
+		>{{ text }}</component
+	>
 </template>
 
 <script lang="ts">
@@ -12,6 +16,7 @@ import {
 	textDefaultProps,
 	textStylePropNames,
 } from '@/defaultProps';
+import useComponentCommon from '@/hooks/useComponentCommon';
 const defaultProps = transformToComponentProps(textDefaultProps);
 
 export default defineComponent({
@@ -30,10 +35,14 @@ export default defineComponent({
 		...defaultProps,
 	},
 	setup(props) {
-		const styleProps = computed(() => pick(props, textStylePropNames));
+		const { styleProps, handleClick } = useComponentCommon(
+			props,
+			textStylePropNames
+		);
 
 		return {
 			styleProps,
+			handleClick,
 		};
 	},
 });

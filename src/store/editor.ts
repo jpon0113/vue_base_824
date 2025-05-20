@@ -29,7 +29,16 @@ export const testComponents: ComponentData[] = [
 		name: 'jp-text',
 		props: { text: 'test2', fontSize: '10px', fontWeight: 'bold' },
 	},
-	{ id: uuidv4(), name: 'jp-text', props: { text: 'test3', fontSize: '14px' } },
+	{
+		id: uuidv4(),
+		name: 'jp-text',
+		props: {
+			text: 'test3',
+			fontSize: '14px',
+			actionType: 'url',
+			url: 'https://www.nba.com',
+		},
+	},
 ];
 
 const editor: Module<EditorProps, GlobalDataProps> = {
