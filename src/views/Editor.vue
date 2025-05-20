@@ -35,6 +35,10 @@
 				class="settings-panel"
 			>
 				組件屬性面板
+				<props-table
+					v-if="currentElement && currentElement.props"
+					:props="currentElement.props"
+				></props-table>
 				<pre>
 					{{ currentElement && currentElement.props }}
 				</pre
@@ -51,12 +55,14 @@ import { GlobalDataProps } from '../store/index';
 import JpText from '@/components/JpText.vue';
 import ComponentsList from '@/components/ComponentsList.vue';
 import EditWrapper from '@/components/EditWrapper.vue';
+import PropsTable from '@/components/PropsTable.vue';
 import defaultTextTemplates from '@/defaultTemplates';
 import { ComponentData } from '@/store/editor';
 export default defineComponent({
 	components: {
 		JpText,
 		EditWrapper,
+		PropsTable,
 		ComponentsList,
 	},
 	setup() {
