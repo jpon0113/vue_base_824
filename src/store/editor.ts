@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Module } from 'vuex';
 import { GlobalDataProps } from './index';
+import { TextComponentProps } from '@/defaultProps';
 
 export interface EditorProps {
 	// 工作區渲染用數據
@@ -9,7 +10,7 @@ export interface EditorProps {
 	currentElement: string;
 }
 
-interface ComponentData {
+export interface ComponentData {
 	// 元素屬性
 	props: { [key: string]: any };
 	// id, uuid v4產生
@@ -47,13 +48,23 @@ const editor: Module<EditorProps, GlobalDataProps> = {
 		currentElement: '',
 	},
 	mutations: {
-		addComponent(state, props) {
+		addComponent(state, props: Partial<TextComponentProps>) {
 			const newComponent: ComponentData = {
 				id: uuidv4(),
 				name: 'jp-text',
 				props,
 			};
 			state.components.push(newComponent);
+		},
+		setActive(state, currentId: string) {
+			state.currentElement = currentId;
+		},
+	},
+	getters: {
+		getCurrentElement: (state) => {
+			return state.components.find(
+				(component) => component.id === state.currentElement
+			);
 		},
 	},
 };

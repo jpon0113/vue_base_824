@@ -12,25 +12,33 @@
 			</a-layout-sider>
 			<a-layout style="padding: 0 24px 24px">
 				<a-layout-content class="preview-container">
-					<p>工作區</p>
+					<p>工作編輯區</p>
 					<div class="preview-list" id="canvas-area">
-						<component
+						<edit-wrapper
 							v-for="component in components"
 							:key="component.id"
-							:is="component.name"
-							v-bind="component.props"
+							:id="component.id"
+							:active="component.id === (currentElement && currentElement.id)"
+							@setActive="setActive"
 						>
-							{{ component.props.text }}
-						</component>
+							<component
+								:is="component.name"
+								v-bind="component.props"
+							></component>
+						</edit-wrapper>
 					</div>
 				</a-layout-content>
 			</a-layout>
 			<a-layout-sider
 				width="300"
-				style="background: purple"
+				style="background: white"
 				class="settings-panel"
 			>
-				組件屬性
+				組件屬性面板
+				<pre>
+					{{ currentElement && currentElement.props }}
+				</pre
+				>
 			</a-layout-sider>
 		</a-layout>
 	</div>
@@ -42,25 +50,37 @@ import { useStore } from 'vuex';
 import { GlobalDataProps } from '../store/index';
 import JpText from '@/components/JpText.vue';
 import ComponentsList from '@/components/ComponentsList.vue';
-import defaultTextTemplates from '../defaultTemplates';
-
+import EditWrapper from '@/components/EditWrapper.vue';
+import defaultTextTemplates from '@/defaultTemplates';
+import { ComponentData } from '@/store/editor';
 export default defineComponent({
 	components: {
 		JpText,
+		EditWrapper,
 		ComponentsList,
 	},
 	setup() {
 		const store = useStore<GlobalDataProps>();
 		const components = computed(() => store.state.editor.components);
+		const currentElement = computed<ComponentData | null>(
+			() => store.getters.getCurrentElement
+		);
+
 		const addItem = (component: any) => {
-			console.log('addItem', component);
 			store.commit('addComponent', component);
+		};
+
+		const setActive = (id: string) => {
+			console.log('setActive', id);
+			store.commit('setActive', id);
 		};
 
 		return {
 			components,
 			defaultTextTemplates,
 			addItem,
+			setActive,
+			currentElement,
 		};
 	},
 });
