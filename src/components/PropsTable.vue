@@ -16,8 +16,9 @@
 							:key="k"
 							:is="value.subComponent"
 							:value="option.value"
-							>{{ option.text }}</component
 						>
+							<render-vnode :vNode="option.text"></render-vnode>
+						</component>
 					</template>
 				</component>
 			</div>
@@ -29,7 +30,8 @@
 import { computed, defineComponent, PropType, VNode } from 'vue';
 import { reduce } from 'lodash';
 import { TextComponentProps } from '@/defaultProps';
-import { mapPropsToForms, PropsToForms } from '@/propsMap';
+import { mapPropsToForms } from '@/propsMap';
+import RenderVnode from './RenderVnode';
 
 interface FormProps {
 	component: string;
@@ -50,6 +52,9 @@ export default defineComponent({
 			type: Object as PropType<TextComponentProps>,
 			require: true,
 		},
+	},
+	components: {
+		RenderVnode,
 	},
 	emits: ['change'],
 	setup(props, context) {
