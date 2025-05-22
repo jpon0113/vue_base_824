@@ -7,12 +7,12 @@ export interface TemplateProps {
 	author: string;
 	copiedCount: number;
 }
-const testData: TemplateProps[] = [
+export const testData: TemplateProps[] = [
 	{
 		id: 1,
 		coverImg:
 			'https://static.imooc-lego.com/upload-files/screenshot-889755.png',
-		title: 'title',
+		title: 'test title 1',
 		author: 'viking',
 		copiedCount: 1,
 	},
