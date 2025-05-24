@@ -1,4 +1,4 @@
-import { VNode, h } from 'vue';
+import { VNode } from 'vue';
 import { TextComponentProps } from './defaultProps';
 
 export interface PropToForm {
@@ -36,6 +36,12 @@ const fontFamilyOptions = fontFamilyArr.map((font) => {
 	};
 });
 
+const pxToNumberHandler: PropToForm = {
+	component: 'a-input-number',
+	initalTransform: (v: string) => parseInt(v),
+	afterTransform: (e: number) => (e ? `${e}px` : ''),
+};
+
 export const mapPropsToForms: PropsToForms = {
 	text: {
 		component: 'a-textarea',
@@ -44,10 +50,8 @@ export const mapPropsToForms: PropsToForms = {
 		afterTransform: (e: any) => e.target.value,
 	},
 	fontSize: {
-		component: 'a-input-number',
 		text: '字體大小',
-		initalTransform: (v: string) => parseInt(v),
-		afterTransform: (e: number) => (e ? `${e}px` : ''),
+		...pxToNumberHandler,
 	},
 	lineHeight: {
 		component: 'a-slider',
@@ -55,6 +59,10 @@ export const mapPropsToForms: PropsToForms = {
 		text: '行高',
 		initalTransform: (v: string) => parseFloat(v),
 		afterTransform: (e: number) => e.toString(),
+	},
+	width: {
+		text: '寬度',
+		...pxToNumberHandler,
 	},
 	textAlign: {
 		component: 'a-radio-group',
@@ -75,6 +83,6 @@ export const mapPropsToForms: PropsToForms = {
 	},
 	color: {
 		component: 'color-picker',
-		text: '字体颜色',
+		text: '字體顏色',
 	},
 };

@@ -54,6 +54,7 @@ import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import { GlobalDataProps } from '../store/index';
 import JpText from '@/components/JpText.vue';
+import JpImage from '../components/JpImage.vue';
 import ComponentsList from '@/components/ComponentsList.vue';
 import EditWrapper from '@/components/EditWrapper.vue';
 import PropsTable from '@/components/PropsTable.vue';
@@ -62,6 +63,7 @@ import { ComponentData } from '@/store/editor';
 export default defineComponent({
 	components: {
 		JpText,
+		JpImage,
 		EditWrapper,
 		PropsTable,
 		ComponentsList,

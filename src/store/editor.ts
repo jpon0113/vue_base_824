@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Module } from 'vuex';
 import { GlobalDataProps } from './index';
-import { TextComponentProps } from '@/defaultProps';
+import { TextComponentProps, ImageComponentProps } from '@/defaultProps';
 
 export interface EditorProps {
 	// 工作區渲染用數據
@@ -12,11 +12,11 @@ export interface EditorProps {
 
 export interface ComponentData {
 	// 元素屬性
-	props: { [key: string]: any };
+	props: Partial<TextComponentProps & ImageComponentProps>;
 	// id, uuid v4產生
 	id: string;
 	// 組件名稱 ex: jp-text, jp-image
-	name: string;
+	name: 'jp-text' | 'jp-image';
 }
 
 export const testComponents: ComponentData[] = [
@@ -63,13 +63,8 @@ const editor: Module<EditorProps, GlobalDataProps> = {
 		currentElement: '',
 	},
 	mutations: {
-		addComponent(state, props: Partial<TextComponentProps>) {
-			const newComponent: ComponentData = {
-				id: uuidv4(),
-				name: 'jp-text',
-				props,
-			};
-			state.components.push(newComponent);
+		addComponent(state, component: ComponentData) {
+			state.components.push(component);
 		},
 		setActive(state, currentId: string) {
 			state.currentElement = currentId;

@@ -38,7 +38,10 @@ export interface TextComponentProps extends CommonComponentProps {
 	color: string;
 	backgroundColor: string;
 }
-
+// Jpimage組件屬性設定
+export interface ImageComponentProps extends CommonComponentProps {
+	src: string;
+}
 export const commonDefaultProps: CommonComponentProps = {
 	// actions
 	actionType: '',
@@ -79,12 +82,22 @@ export const textDefaultProps: TextComponentProps = {
 	backgroundColor: '',
 	...commonDefaultProps,
 };
+
+export const imageDefaultProps: ImageComponentProps = {
+	src: 'test.url',
+	...commonDefaultProps,
+};
 // JpText組件 without(非css style part)
 export const textStylePropNames = without(
 	Object.keys(textDefaultProps),
 	'actionType',
 	'url',
 	'text'
+);
+// JpImage組件 without(非css style part)
+export const imageStylePropsNames = without(
+	Object.keys(imageDefaultProps),
+	'src'
 );
 // mapValue
 export const transformToComponentProps = <T extends {}>(props: T) => {

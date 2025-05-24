@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	rules: {
-		semi: ['error', 'never'],
+		semi: 0,
 		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 	},

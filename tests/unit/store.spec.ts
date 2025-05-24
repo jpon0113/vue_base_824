@@ -1,7 +1,6 @@
 import store from '@/store/index';
 import { testData } from '@/store/templates';
 import { testComponents, ComponentData } from '@/store/editor';
-import { TextComponentProps } from '../../src/defaultProps';
 import { clone, last } from 'lodash-es';
 const cloneComponents = clone(testComponents);
 describe('test vuex store', () => {
@@ -42,8 +41,12 @@ describe('test vuex store', () => {
 			expect(currentElement.id).toBe(cloneComponents[0].id);
 		});
 		it('add component should works fine', () => {
-			const payload: Partial<TextComponentProps> = {
-				text: 'text1',
+			const payload: ComponentData = {
+				name: 'jp-text',
+				id: '1234',
+				props: {
+					text: 'text1',
+				},
 			};
 			store.commit('addComponent', payload);
 			expect(store.state.editor.components).toHaveLength(

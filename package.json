@@ -14,7 +14,7 @@
     "core-js": "^3.6.5",
     "lodash-es": "^4.17.20",
     "uuid": "^8.3.2",
-    "vue": "^3.0.0",
+    "vue": "^3.5.14",
     "vue-router": "^4.0.1",
     "vuex": "^4.0.0-rc.2"
   },
@@ -29,14 +29,16 @@
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "^4.5.10",
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/compiler-sfc": "^3.5.14",
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
     "flush-promises": "^1.0.2",
     "rgb-hex": "^3.0.0",
-    "typescript": "~3.9.3",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1",
+    "typescript": "^5.8.3",
     "vue-jest": "^5.0.0-0"
   }
 }
